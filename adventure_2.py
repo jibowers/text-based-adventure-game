@@ -32,7 +32,7 @@ def can_enter(old_place, door, command):
 	if not door_keys:
 		return True
 	ready_keys = []
-	for obstacle in door_keys:
+	for obstacle in list(door_keys):
 		if type(obstacle) == Monster:
 			print("There is a monster in your way! It is a " + obstacle.name)
 			won = fight(obstacle)
@@ -111,12 +111,12 @@ def choose_and_attack(victim):
 	key_choice = input("Pick an attack. (1, 2, 3, etc...), type \"n\" to go back: ")
 	if not key_choice.isdigit():
 		return False
-	while not int(key_choice) - 1 < len(me.attacks):
+	while not int(key_choice) - 1 < len(me.attacks): ## check if in range
 		key_choice = input("Pick one of the numbers: ")
 		if not key_choice.isdigit():
 			return False
-	if int(key_choice) - 1 < len(me.attacks):  ## check if in range
-		attack(victim, me.attacks[int(key_choice) - 1])
+	attack(victim, me.attacks[int(key_choice) - 1])
+	return True
 		
 def fight(monster):
 	## should there be a set number of attacks/moves??
@@ -124,7 +124,9 @@ def fight(monster):
 		## player move
 		# player chooses attack : display attacks, also option to run
 		print("Choose an attack")
-		choose_and_attack(monster)
+		if not choose_and_attack(monster):
+			print("Point A")
+			return False
 		
 		if monster.willingness <= 0 or monster.health_points <= 0 or me.willingness <= 0 or me.health_points <= 0:
 			break
@@ -133,7 +135,8 @@ def fight(monster):
 		if monster.health_points <= 20 or monster.willingness <= 20:
 			# monster starting to run away
 			print(monster.name + " is hurt and starting to retreat! You have one last chance to defeat them.")
-			choose_and_attack(monster)
+			if not choose_and_attack(monster):
+				return False
 			if monster.health_points > 0 and monster.willingness > 0:
 				print("They were able to get away! Their power is restored slightly...")
 				## restore monster power
@@ -159,6 +162,8 @@ def fight(monster):
 	else:
 		print("  You lost!")
 		print(" You black out and wake up back where you started... ")
+		me.health_points = 100
+		me.willingness = 100
 		current_place = placeIdDict["mir"]
 		return False ## you lost
 	
@@ -241,20 +246,24 @@ peach_key = Key("pek", "Peach key")
 slice = Attack("sli", "Slice", "swish", 1000, 40, 0)
 show_compassion = Attack("com", "Compassion", "Showers opponent with sympathy", 10000, 0, 50)
 sting = Attack("sti", "Sting", "Deadly sting", 10000, 30, 0)
+magic_spell = Attack("mag", "Avada Kedavra", "You're probably gonna die...", 10000, 45, 30)
 
 me.attacks.append(show_compassion)
 scorpion = Monster("sco", "Deadly Scorpion", "Will probably kill you...", [sting])
+death_eater = Monster("dea", "Death Eater", "Serves Lord Voldemort",[])
+death_eater.attacks.append(magic_spell)
+
 
 sword = Weapon("swo", "Sword", "gives you the slice attack", slice)
 
 bread_loaf = Food("bre", "Loaf of Bread", "gives you health points!", 60)
 
-print (me.attacks)
+# print (me.attacks)
 
 ## Place(str id, str name, str description, list of items inside, list of four connecting rooms in NSEW order, list of list of locks to adjacent rooms in NSEW order)
 placeIdDict["mir"] = Place("mir", "Mirror Room", "A lot of mirrors, four doors", [], ["red", "pin", "gre", "win"], [None, None, [orange_key], [purple_key]])
-placeIdDict["red"] = Place("red", "Red Room", "The walls are all red... blood?", [sword, blue_key], [None, "mir", "aqu", None], [None, None, [scorpion], None])
-placeIdDict["aqu"] = Place("aqu", "Aqua Room", "You are drowning...", [peach_key], [None, None, None, "red"], [None, None, None, [scorpion]])
+placeIdDict["red"] = Place("red", "Red Room", "The walls are all red... blood?", [sword, blue_key], [None, "mir", "aqu", None], [None, None, [scorpion, death_eater], None])
+placeIdDict["aqu"] = Place("aqu", "Aqua Room", "You are drowning...", [peach_key], [None, None, None, "red"], [None, None, None, [scorpion, death_eater]])
 placeIdDict["pin"] = Place("pin", "Pink Room", "Fluffy pink walls :D", [orange_key, bread_loaf], ["mir", None, None, None], [])
 placeIdDict["gre"] = Place("gre", "Green Room", "Slimy", [], [None, "yel", None, "mir"], [None, [blue_key, orange_key], None, [orange_key]])
 placeIdDict["yel"] = Place("yel", "Yellow Room", "Pretty sunlight", [purple_key], ["gre", None, None, None], [[blue_key, orange_key], None, None, None])
@@ -278,7 +287,7 @@ while True:
 	##print(current_place.name)
 	choice = input("Where do you want to go (n/s/e/w/i -view inventory /c -get current place description /h -get your stats)? ")
 	while not valid_input(choice):
-		choice = input("Please enter n, s, e, w, i, or c: ")
+		choice = input("Please enter n, s, e, w, i, c, or h: ")
 	if choice == "i":
 		display_inventory()
 		choose_powerup()
@@ -293,11 +302,11 @@ while True:
 		continue
 	current_place = move(choice)
 	##print (" You are in ", current_place.name)
-	display_inventory()
 	##print(current_place)
 	print("___________________")
 	if current_place == placeIdDict["win"]:
 		break
+	display_inventory()
 
 print("You won the game! congrats!")
 
