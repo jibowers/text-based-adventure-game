@@ -221,11 +221,29 @@ def choose_powerup():
 		else:
 			print("Try again")
 		
-		
+def add_to_log(previous_command, new_place):
+	if previous_command == "n":
+		cardinal = "north"
+	elif previous_command == "s":
+		cardinal = "south"
+	elif previous_command == "e":
+		cardinal = "east"
+	elif previous_command == "w":
+		cardinal = "west"
+	log.append("Moved " + cardinal + " to " + new_place.name)
+
+def display_log(view_num):
+	if len(log) <= view_num:
+		to_view = log
+	else:
+		to_view = log[-view_num:]
+	for line in to_view:
+		print(line)
 		
 
 P_critical_strike = 0.05
 P_miss = 0.04
+log = []
 
 name = input("Enter your name: ")
 
@@ -235,7 +253,7 @@ me = Being(0, name, "I am me", [])
 
 
 inventory = []
-commands = ["n", "s", "e", "w", "i", "c", "h"]
+commands = ["n", "s", "e", "w", "i", "c", "h", "l"]
 placeIdDict = {}
 
 purple_key = Key("pk", "Purple key")
@@ -285,9 +303,9 @@ print(current_place)
 while True:
 ## game play
 	##print(current_place.name)
-	choice = input("Where do you want to go (n/s/e/w/i -view inventory /c -get current place description /h -get your stats)? ")
+	choice = input("Where do you want to go (n/s/e/w/i -view inventory /c -get current place description /h -get your stats /l -view log)? ")
 	while not valid_input(choice):
-		choice = input("Please enter n, s, e, w, i, c, or h: ")
+		choice = input("Please enter n, s, e, w, i, c, h, or l: ")
 	if choice == "i":
 		display_inventory()
 		choose_powerup()
@@ -300,7 +318,11 @@ while True:
 	if choice == "h":
 		display_stats(me)
 		continue
+	if choice == "l":
+		display_log(20)
+		continue
 	current_place = move(choice)
+	add_to_log(choice, current_place)
 	##print (" You are in ", current_place.name)
 	##print(current_place)
 	print("___________________")
