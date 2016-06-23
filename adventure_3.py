@@ -221,15 +221,15 @@ def generate_from_file(filename):
 	count_large = 0
 	with open(filename, 'r') as input:
 		for line in input:
-			print (line)
-			print(count_large)
+			##print (line)
+			##print(count_large)
 			if line.strip() == large_break:
-				print("MADE IT HERE")
+				##print("MADE IT HERE")
 				count_large += 1
-				print("New count_large: " + str(count_large))
+				##print("New count_large: " + str(count_large))
 				continue
 			info = line.split(small_break)
-			print (info)
+			##print (info)
 			if count_large == 0: ## timestamp
 				print("Time" + line)
 			elif count_large == 1:  ## key creation
@@ -275,7 +275,7 @@ def generate_from_file(filename):
 				description = info[2]
 				real_items = []
 				if info[3]: ## if empty
-					print("Not empty")
+					##print("Not empty")
 					items_inside = info[3].split(tiny_break) ## just the item code
 					for s in items_inside:
 						real_items.append(allItemsDict[s]) ##finds item from allItemsDict and puts key/food/weapon object in real_items
@@ -301,11 +301,11 @@ def generate_from_file(filename):
 							real_locks.append(allItemsDict[l])
 				placeIdDict[key] = Place(key, name, description, real_items, actual_places, real_locks)
 			else:
-				print ("This is the name: " + info[0])
+				##print ("This is the name: " + info[0])
 				name = info[0][:3]
-				print (name)
+				##print (name)
 				current_place = placeIdDict[name]
-				print(current_place)
+				##print(current_place)
 				return current_place
 				
 def save_to_file(filename):
