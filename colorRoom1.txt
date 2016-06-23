@@ -1,0 +1,28 @@
+TIMESTAMP
+$#$
+puk^%^Purple key^%^
+ork^%^Orange key^%^
+blk^%^Blue key^%^
+pek^%^Peach key^%^
+$#$
+bre^%^Loaf of bread^%^gives you health points!^%^60^%^
+$#$
+sli^%^Slice^%^swish^%^1000^%^40^%^0^%^
+com^%^Compassion^%^Showers opponent with sympathy^%^1000^%^0^%^50^%^
+sti^%^Sting^%^Deadly sting^%^1000^%^30^%^0^%^
+$#$
+swo^%^Sword^%^gives you slice attack!^%^sli^%^
+$#$
+sco^%^Scorpion^%^Will probably kill you...^%^sti^%^
+$#$
+mir^%^Mirror Room^%^A lot of mirrors, four doors^%^^%^red*^pin*^gre*^win^%^*^*^ork*^puk^%^
+red^%^Red Room^%^The walls are all red... blood?^%^swo*^blk^%^*^mir*^aqu*^^%^*^*^sco*^^%^
+aqu^%^Aqua Room^%^You are drowning...^%^pek^%^*^*^*^red^%^*^*^*^sco^%^
+pin^%^Pink Room^%^Fluffy pink walls :D^%^ork*^bre^%^mir*^*^*^^%^^%^
+gre^%^Green Room^%^Slimy^%^^%^*^yel*^*^mir^%^*^blk*^ork^%^^%^ork*^*^*^^%^
+yel^%^Yellow Room^%^Pretty sunlight^%^puk^%^gre*^*^*^^%^blk,ork*^*^*^^%^
+win^%^Cake Room^%^You won!^%^^%^*^*^mor*^^%^*^*^puk,pek*^^%^
+$#$
+mir
+
+
