@@ -1,0 +1,34 @@
+Here is the setup for a txt file in GameSettings:
+whenever it refers to an item, monster, attack, or place, write its 3-character id
+look in GameSettings directory for examples
+
+TIMESTAMP
+Name
+Short description (one line) of the game
+large break (for this case we're going to use ###) cannot be "," or contain whitespace
+small break ("""""""  @) cannot be "," or contain whitespace
+tiny break  ("""""""  $) cannot be "," or contain whitespace
+###
+3-character item id@key name@
+more keys...
+### 
+3-character item id@food name@calories@
+###
+3-character attack id@Attack name@description@uses@power@compassion@
+###
+3-character item id@weapon name@description@corresponding_attack@
+###
+3-character being id@Monster name@description@attack1$attack2@hp@willingness@
+###
+3-character place id@Place name@description@item1$item2@northroom$southroom$eastroom$westroom@northkey1,northmonster2$southkey1$$@
+if no locks, can just end with @_locks would go here_@
+###
+myattack1id@myattack2id@
+###
+myhp@mywillingness@
+###
+inventoryitem1@item2@item3@
+###
+P_critical_hit@P_miss@
+###
+current_place
