@@ -72,6 +72,8 @@ def can_enter(old_place, door, command):
 			if inventory[int(key_choice) - 1] in list((door_keys)):
 				print("Getting closer... ")
 				ready_keys.append(inventory[int(key_choice) - 1])
+			else:
+				print("Hm... that key doesn't work")
 		else:
 			print("Out of range")
 		if set(door_keys) == set(ready_keys):
@@ -272,8 +274,9 @@ def generate_from_file():
 		print("Time: " + time)
 		name = input.readline().strip()
 		print("Name: " + name)
-		synopsis = input.readline().strip()
-		print(synopsis)
+		global game_description
+		game_description = input.readline().strip()
+		print(game_description)
 		large_break = input.readline().strip()
 		small_break = input.readline().strip()
 		tiny_break = input.readline().strip()
@@ -398,8 +401,8 @@ def save_to_file():
 	with open(filename, 'w') as f:
 		#timestamp
 		f.write(str(datetime.now()) + "\n")
-		f.write(me.name)
-		f.write("\n")
+		f.write(me.name + "\n")
+		f.write(game_description + "\n")
 		f.write(large_d)
 		f.write("\n")
 		f.write(small_d)
@@ -502,9 +505,7 @@ def save_to_file():
 		f.write(large_d)
 		f.write("\n")
 		# hit and miss %
-		# f.write(P_critical_strike)
 		f.write(repr(P_critical_strike) + small_d + repr(P_miss) + small_d)
-		print(P_critical_strike)
 		f.write("\n")
 		f.write(large_d)
 		f.write("\n")
@@ -517,7 +518,7 @@ def save_to_file():
 def choose_open():
 	myFiles = {}
 	count = 0
-	for file in os.listdir("C:/Python34/programs/TextAdventure/GameSettings"):
+	for file in os.listdir(current_path + "/GameSettings"):
 		count += 1
 		if file.endswith(".txt"):
 			myFiles[str(count)] = file
@@ -525,11 +526,11 @@ def choose_open():
 	choice = input("Choose a game file to open: ")
 	while choice not in myFiles:
 		choice = input("Pick a valid number... ")
-	return "C:/Python34/programs/TextAdventure/GameSettings/" + myFiles[choice]
+	return current_path + "/GameSettings/" + myFiles[choice]
 		
 	
 def choose_save():
-	save_path = 'C:/Python34/programs/TextAdventure/GameSettings'
+	save_path = current_path + '/GameSettings'  ##'C:/Python34/programs/TextAdventure/GameSettings'
 	name_of_file = input("If you want to save to the same file you opened from, type 's'. Otherwise, make a new name: ")
 	#print("loaded from:" + loaded_from)
 	if name_of_file == 's':
@@ -549,6 +550,7 @@ me = Being(0, name, "I am me", [], 100, 100)
 
 P_critical_strike = 0.1
 P_miss = 0.1
+game_description = ""
 
 loaded_from = ""
 
@@ -567,6 +569,9 @@ allItemsDict = {}
 tiny_d = '$'
 small_d = '@'
 large_d = '###'
+
+current_path = os.path.dirname(os.path.realpath(__file__))
+print(current_path)
 
 current_place, loaded_from = generate_from_file()
 
