@@ -25,9 +25,10 @@ class Key(Item):
 		
 		
 class Food(Item):
-	def __init__(self, id, name, description, calories):
+	def __init__(self, id, name, description, calories, motivation):
 		Item.__init__(self, id, name, "food", description, False)
 		self.calories = calories
+		self.motivation = motivation
 
 class Weapon(Item):
 	def __init__(self, id, name, description, corresponding_attack):

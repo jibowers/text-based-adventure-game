@@ -179,7 +179,7 @@ def fight(monster):
 		print(" You black out and wake up back where you started... ")
 		me.health_points = 100
 		me.willingness = 100
-		current_place = placeIdDict["mir"]
+		current_place = placeIdDict[firstplace]
 		return False ## you lost
 	
 def add_attack(weapon):
@@ -188,6 +188,7 @@ def add_attack(weapon):
 
 def attack(victim, attack):
 	print (victim.name + " was attacked with " + attack.name)
+	print(attack.description)
 	## check for critical strike
 	chance = random.random()
 	if chance < P_critical_strike:
@@ -214,10 +215,22 @@ def eat(food):
 	print("Eating " + food.name)
 	inventory.remove(food)
 	me.health_points += food.calories
+	me.willingness += food.motivation
 	if me.health_points > 100: ##set cap on HP
 		me.health_points = 100
+	if me.willingness > 100:
+		me.willingness = 100
 		
 def choose_powerup():
+	if len(inventory) == 0:
+		return False
+	contains_food = False
+	for i in inventory:
+		if type(i) == Food:
+			contains_food = True
+			break
+	if not contains_food:
+		return False
 	choice = input("Would you like to use any items (power-ups) right now? y/n ")
 	while not (choice == "y" or choice == "n"):
 		choice = input("Enter \"y\" or \"n\": ")
@@ -256,12 +269,13 @@ def display_log(view_num):
 		print(line)
 
 def recharge():
-	choice = input("Would you like to recharge? y/n ")
-	if choice == "y":
-		me.health_points = 100
-		me.willingness = 100
-		print("You have recharged!")
-		display_stats(me)
+	if me.health_points < 100 or me.willingness < 100:
+		choice = input("Would you like to recharge? y/n ")
+		if choice == "y":
+			me.health_points = 100
+			me.willingness = 100
+			print("You have recharged!")
+			display_stats(me)
 	
 
 def generate_from_file():
@@ -300,7 +314,8 @@ def generate_from_file():
 				name = info[1]
 				description = info[2]
 				calories = int(info[3])
-				foodIdDict[key] = Food(key, name, description, calories)
+				motivation = int(info[4])
+				foodIdDict[key] = Food(key, name, description, calories, motivation)
 				allItemsDict[key] = foodIdDict[key]
 			elif count_large == 3: ## attack creation
 				key = info[0]
@@ -387,9 +402,10 @@ def generate_from_file():
 				P_miss = float(info[1])
 			else:
 				##print ("This is the name: " + info[0])
-				name = info[0][:3]
+				global firstplace
+				firstplace = info[0][:3]
 				##print (name)
-				current_place = placeIdDict[name]
+				current_place = placeIdDict[firstplace]
 				#loaded_from = filename
 				#print("Loaded from: " + loaded_from)
 				##print(current_place)
@@ -422,7 +438,7 @@ def save_to_file():
 		# food
 		for x in foodIdDict:
 			e = foodIdDict[x]
-			l = [e.id, e.name, e.description, str(e.calories)]
+			l = [e.id, e.name, e.description, str(e.calories), str(e.motivation)]
 			f.write(small_d.join(l) + small_d)  ##do I need the extra at end??
 			f.write("\n")
 		#
@@ -553,6 +569,7 @@ P_miss = 0.1
 game_description = ""
 
 loaded_from = ""
+firstplace = ""
 
 inventory = []
 commands = ["n", "s", "e", "w", "i", "c", "h", "l", "q"]
