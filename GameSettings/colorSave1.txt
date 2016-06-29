@@ -1,4 +1,4 @@
-2016-06-28 13:04:05.053314
+2016-06-28 13:28:09.303552
 Julia
 Description!! :D
 ###
@@ -6,11 +6,11 @@ Description!! :D
 $
 ###
 ork@Orange key@
-blk@Blue key@
 pek@Peach key@
+blk@Blue key@
 puk@Purple key@
 ###
-bre@Loaf of bread@gives you health points!@60@-10@
+bre@Loaf of bread@gives you health points!@60@0@
 ###
 sti@Sting@Deadly sting@1000@30@0@
 com@Compassion@Showers opponent with sympathy@1000@0@50@
@@ -20,20 +20,21 @@ swo@Sword@gives you slice attack!@sli@
 ###
 sco@Scorpion@Will probably kill you...@sti@100@100@
 ###
-pin@Pink Room@Fluffy pink walls :D@ork$bre@mir$$$@$$$@
-rec@Recharge Room@Get your health back up!@@$$$aqu@$$$@
-gre@Green Room@Slimy@@$yel$$mir@$blk$$ork@
 yel@Yellow Room@Pretty sunlight@puk@gre$$$@blk,ork$$$@
-mir@Mirror Room@A lot of mirrors, four doors@@red$pin$gre$win@$$ork$puk@
-red@Red Room@The walls are all red... blood?@swo$blk@$mir$aqu$@$$sco$@
 aqu@Aqua Room@You are drowning...@pek@$$rec$red@$$$sco@
+pin@Pink Room@Fluffy pink walls :D@@mir$$$@@
+red@Red Room@The walls are all red... blood?@@$mir$aqu$@$$sco$@
 win@Cake Room@You won!@@$$mor$@$$puk,pek$@
+rec@Recharge Room@Get your health back up!@@$$$aqu@@
+gre@Green Room@Slimy@@$yel$$mir@$blk$$ork@
+mir@Mirror Room@A lot of mirrors, four doors@@red$pin$gre$win@$$ork$puk@
 ###
-com@
+com@sli@
 ###
 100@100@
 ###
+swo@blk@ork@bre@
 ###
 0.05@0.04@
 ###
-mir
+pin

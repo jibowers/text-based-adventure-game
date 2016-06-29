@@ -1,0 +1,84 @@
+2016-06-28 13:05:01.706554
+Julia
+Here is a description
+###
+@
+$
+###
+rub@Ruby key@
+sap@Sapphire key@
+gar@Garnet key@
+pea@Pearl key@
+ame@Amethyst key@
+dia@Diamond key@
+eme@Emerald key@
+opa@Opal key@
+per@Peridot key@
+aqu@Aquamarine key@
+###
+bre@Loaf of bread@gives you health points!@60@5@
+sub@Giant submarine sandwich@looks so good!@100@10@
+piz@Entire pizza@has one slice missing... ???@80@20@
+mol@Moldy sandwich@doesn't look healthy...@-10@-20@
+drp@Can of Dr.Pepper@texan classic <3@50@25@
+don@Box of donuts@is a krispy creme 12-count box... with one missing@60@20@
+dgf@Dog food@is an already-opened can of man's best friend's food@20@-15@
+###
+com@Compassion@Showers opponent with sympathy@1000@0@40@
+sli@Slice@swish@1000@40@0@
+gba@Gerbile attack!@Your gerbil attacks the opponent with full force@1000@20@40@
+sti@Sting@Deadly sting@1000@30@10@
+gay@Gay rainbow@Ain't nobody gonna dull my sparkle@1000@0@45@
+gun@Bullet stream@This is Texas and gun laws are too fucking relaxed@1000@30@10
+bit@Bite@ouch@1000@20@10
+snk@Snake bite@probably venomous@1000@35@10@
+tai@Tail slap@its big tail hits you@1000@40@10@
+fan@Fang attack@sinks its fangs into your skin@1000@30@10@
+###
+ger@Gerbil@may help you on your quest@gba@
+swo@Sword@gives you slice attack!@sli@
+fla@Rainbow Flag@gives you the power to be fantabulous!@gay@
+###
+sco@Scorpion@Will probably kill you...@sti@100@100@
+bas@Basalisk@Straight from your nightmares@snk@100@100@
+hom@Homophobic jerk@Trump supporter attacks with a bbq prong and an assault rifle@gun@100@100@
+wo1@Omega wolf@weak little wolf@bit@80@80@
+wo2@Beta wolf@a bigger wolf@bit@90@90@
+wo3@Alpha wolf@the big bad wolf@bit@100@100@
+dog@Feral dog@probably has rabies...@bit@100@100@
+cot@Cottonmouth snake@This is what they warned you about@snk@100@100@
+wha@Beached whale@how did that even get in here...@tai$com@100@100@
+vam@Vampire bat@fluttering around@fan@100@100@
+ami@Amigo@this dog loves you so much <3@com@100@100@
+###
+hmr@Home base@this room looks familiar...@sub@rm7$r14$r11$r10@$$$@
+rm1@Hydrogen room@dgf@opa@$rm6$rm2$@$$bas$@
+rm2@Helium room@Your voice is higher-pitched in here@@$$rm3$rm1@$$$bas@
+rm3@Lithium room@@@$rm7$rm4$rm2@$rub$wo1,wo2,wo3$@
+rm4@Beryllium room@@@$$rm5$rm3@$$per$wo1,wo2,wo3@
+rm5@Boron room@@aqu$eme@$rm8$$rm4@$hom$$per@
+rm6@Carbon room@Full of the building block of life.@per@rm1$rm9$$@$$$@
+rm7@Nitrogen room@Pretty much atmopheric composition@sap$mol@rm3$hmr$$@rub$$$@
+rm8@Oxygen room@You can finally breathe well@@rm5$r12$$@hom$$$@
+rm9@Flourine room@@piz@rm6$r13$r10$@$cot$ami,pea$@
+r10@Nean room@Crazy lights!@ger$rub@$$hmr$rm9@$$$ami,pea@
+r11@Sodium room@Damn so much saltiness@gar$fla@$$r12$hmr@$$dog,sap$@
+r12@Magnesium room@@drp@rm8$r15$$r11@$$$sap,dog@
+r13@Aluminum room@So many reflections...@@rm9$r16$$@cot$$$@
+r14@Silicon room@You could make a fortune on semiconductors with this room...@swo$pea@hmr$r18$$@$gar$$@
+r15@Phosphorus room@@@r12$r20$$@$wha$$@
+r16@Sulphur room@Yellow and chalky.@ame@r13$$r17$@$$vam$@
+r17@Chloring room@Smells like a swimming pool@@$$r18$r16@$$aqu$vam@
+r18@Argon room@Crazy colors@don@r14$$r19$r17@gar$$sco$aqu@
+r19@Potassium room@K.@@win$$r20$r18@ame,dia,eme,opa$$$sco@
+r20@Calcium room@Eating the walls will make your bones strong@dia@r15$$$r19@wha$$$@
+win@A room with a golden door@THERE IS AN ELEVATOR TO GET YOU OUT OF MORGAN'S LABYRINTH. HALLELUJAH!@@$r19$$@$ame,dia,eme,opa$$@
+###
+com@
+###
+100@100@
+###
+###
+0.05@0.04@
+###
+hmr
